@@ -63,6 +63,8 @@ $client = $api->contact();
 
 // filters
 $client->size = 100;
+$client->email = 'john.doe@example.com';
+$client->name = 'John Doe';
 $client->number = 123456;
 $client->customer = true;
 $client->vendor = false;
