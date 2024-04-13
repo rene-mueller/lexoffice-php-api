@@ -17,6 +17,10 @@ class Contact extends PaginationClient
 
     protected string $resource = 'contacts';
 
+    public ?string $email = null;
+
+    public ?string $name = null;
+
     public ?int $number = null;
 
     public ?bool $customer = null;
@@ -25,6 +29,8 @@ class Contact extends PaginationClient
 
     protected function buildQueryParams(array $params): string
     {
+        $params['email'] = $this->email;
+        $params['name'] = $this->name;
         $params['number'] = $this->number;
         $params['customer'] = $this->customer;
         $params['vendor'] = $this->vendor;
