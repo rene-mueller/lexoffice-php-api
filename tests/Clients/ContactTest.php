@@ -29,6 +29,8 @@ class ContactTest extends TestClient
     {
         [$api, $client] = $this->createClientMockObject(Contact::class);
 
+        $client->email = 'john.doe@example.com';
+        $client->name = 'John Doe';
         $client->number = 12345;
         $client->customer = true;
         $client->vendor = false;
@@ -36,7 +38,7 @@ class ContactTest extends TestClient
         $client->getPage(0);
 
         $this->assertEquals(
-            $api->apiUrl . '/v1/contacts?page=0&number=12345&customer=1&vendor=0&size=100',
+            $api->apiUrl . '/v1/contacts?page=0&email=john.doe%40example.com&name=John+Doe&number=12345&customer=1&vendor=0&size=100',
             $api->getRequest()->getUri()->__toString()
         );
     }
