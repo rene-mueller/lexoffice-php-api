@@ -183,6 +183,11 @@ $response = $api->paymentCondition()->getAll();
 $response = $api->postingCategory()->getAll();
 ```
 
+### Print Layouts Endpoint
+```php
+$response = $api->printLayout()->getAll();
+```
+
 ### Profile Endpoint
 ```php
 $response = $api->profile()->get();

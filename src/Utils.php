@@ -86,7 +86,7 @@ class Utils
     public static function createMultipartStream(array $content, string $boundary = null): MultipartStream
     {
         $stream = [];
-        $boundary = $boundary ?: '--lexoffice';
+        $boundary = !is_null($boundary) && $boundary !== '' ? $boundary : '--lexoffice';
 
         foreach ($content as $key => $value) {
             $stream[] = [
