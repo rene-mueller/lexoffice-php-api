@@ -24,6 +24,7 @@ use Sysix\LexOffice\Clients\OrderConfirmation;
 use Sysix\LexOffice\Clients\Payment;
 use Sysix\LexOffice\Clients\PaymentCondition;
 use Sysix\LexOffice\Clients\PostingCategory;
+use Sysix\LexOffice\Clients\PrintLayout;
 use Sysix\LexOffice\Clients\Profile;
 use Sysix\LexOffice\Clients\Quotation;
 use Sysix\LexOffice\Clients\RecurringTemplate;
@@ -147,6 +148,11 @@ class Api implements ApiInterface
     public function postingCategory(): PostingCategory
     {
         return new PostingCategory($this);
+    }
+
+    public function printLayout(): PrintLayout
+    {
+        return new PrintLayout($this);
     }
 
     public function profile(): Profile

@@ -19,6 +19,7 @@ use Sysix\LexOffice\Clients\OrderConfirmation;
 use Sysix\LexOffice\Clients\Payment;
 use Sysix\LexOffice\Clients\PaymentCondition;
 use Sysix\LexOffice\Clients\PostingCategory;
+use Sysix\LexOffice\Clients\PrintLayout;
 use Sysix\LexOffice\Clients\Profile;
 use Sysix\LexOffice\Clients\Quotation;
 use Sysix\LexOffice\Clients\RecurringTemplate;
@@ -52,6 +53,7 @@ class ApiTest extends TestClient
         $this->assertInstanceOf(Payment::class, $stub->payment());
         $this->assertInstanceOf(PaymentCondition::class, $stub->paymentCondition());
         $this->assertInstanceOf(PostingCategory::class, $stub->postingCategory());
+        $this->assertInstanceOf(PrintLayout::class, $stub->printLayout());
         $this->assertInstanceOf(Profile::class, $stub->profile());
         $this->assertInstanceOf(Quotation::class, $stub->quotation());
         $this->assertInstanceOf(RecurringTemplate::class, $stub->recurringTemplate());
