@@ -3,8 +3,6 @@ name: Coverage Report
 on:
   push:
     branches: [ development ]
-  pull_request:
-    branches: [ development ]
 
 jobs:
   coverage:
@@ -28,38 +26,9 @@ jobs:
           composer install --prefer-dist
 
       - name: Execute tests with coverage
-        run: vendor/bin/phpunit  --configuration 'phpunit.xml' --coverage-clover=coverage.xml --coverage-cobertura=coverage-cobertura.xml
+        run: vendor/bin/phpunit  --configuration 'phpunit.xml' --coverage-cobertura=coverage-cobertura.xml
 
-      - if: ${{ github.event_name == 'pull_request' }}
-        name: Download artifact
-        uses: dawidd6/action-download-artifact@v3
-        continue-on-error: true
-        with:
-          workflow: .github/workflows/coverage-report.yml
-          branch: development
-          name: coverage-report
-          path: tests/base
-
-      - if: ${{ github.event_name != 'pull_request' }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report
-          path: coverage.xml
-
-      - if: ${{ github.event_name == 'pull_request' }}
-        name: Coverage Report as Comment (Clover)
-        uses: lucassabreu/comment-coverage-clover@main
-        with:
-          file: coverage.xml
-          base-file: test/base/coverage.xml
-
-      - if: ${{ github.event_name != 'pull_request' }}
-        uses: action-badges/create-orphan-branch@0.1.1
-        with:
-          branch-name: badges
-
-      - if: ${{ github.event_name != 'pull_request' }}
-        name: Make Coverage Badge
+      - name: Make Coverage Badge
         uses: action-badges/cobertura-coverage-xml-badges@0.3.0
         with:
           file-name: coverage.svg
