@@ -6,6 +6,7 @@ namespace Sysix\LexOffice\Tests;
 
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
+use Sysix\LexOffice\Clients\Article;
 use Sysix\LexOffice\Clients\Contact;
 use Sysix\LexOffice\Clients\Country;
 use Sysix\LexOffice\Clients\CreditNote;
@@ -40,6 +41,7 @@ class ApiTest extends TestClient
     {
         $stub = $this->createApiMockObject(new Response());
 
+        $this->assertInstanceOf(Article::class, $stub->article());
         $this->assertInstanceOf(Contact::class, $stub->contact());
         $this->assertInstanceOf(Country::class, $stub->country());
         $this->assertInstanceOf(CreditNote::class, $stub->creditNote());
