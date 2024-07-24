@@ -56,7 +56,7 @@ $api = new \Sysix\LexOffice\Api($apiKey, $httpClient);
 ## Endpoints
 
 
-### Contact Endpoint
+### Article Endpoint
 ```php
 
 /** @var \Sysix\LexOffice\Api $api */
