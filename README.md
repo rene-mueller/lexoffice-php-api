@@ -55,10 +55,36 @@ $api = new \Sysix\LexOffice\Api($apiKey, $httpClient);
 
 ## Endpoints
 
+
 ### Contact Endpoint
 ```php
 
 /** @var \Sysix\LexOffice\Api $api */
+$client = $api->article();
+
+// filters
+$client->size = 100;
+$client->sortDirection = 'DESC';
+
+$client->articleNumber = 'LXW-BUHA-2024-001';
+$client->gtin = '9783648170632';
+$client->type = 'PRODUCT';
+
+
+// get a page
+$response = $client->getPage(0);    
+
+// other methods
+$response = $client->get($entityId);
+$response = $client->create($data);
+$response = $client->update($entityId, $data);
+$response = $client->delete($entityId);
+
+```
+
+### Contact Endpoint
+```php
+
 $client = $api->contact();
 
 // filters

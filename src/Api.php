@@ -11,6 +11,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 use SensitiveParameter;
+use Sysix\LexOffice\Clients\Article;
 use Sysix\LexOffice\Clients\Contact;
 use Sysix\LexOffice\Clients\Country;
 use Sysix\LexOffice\Clients\CreditNote;
@@ -85,6 +86,11 @@ class Api implements ApiInterface
     protected function createApiUri(string $resource): UriInterface
     {
         return new Uri($this->apiUrl . '/' . $this->apiVersion . '/' . $resource);
+    }
+
+    public function article(): Article
+    {
+        return new Article($this);
     }
 
     public function contact(): Contact
