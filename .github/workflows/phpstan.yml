@@ -12,6 +12,6 @@ jobs:
       - uses: php-actions/phpstan@v3
         with:
           path: src/ tests/
-          level: 9
+          level: 10
 
   
