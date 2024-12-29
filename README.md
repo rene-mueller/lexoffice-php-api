@@ -45,9 +45,9 @@ Here is a example with `guzzlehttp/guzzle` , `kevinrob/guzzle-cache-middleware` 
 ```php
 $apiKey = getenv('LEXOFFICE_API_KEY'); 
 
-$stack = \GuzzleHttp\HandlerStack();
-$stack->push(new \Kevinrob\GuzzleCache\CacheMiddleware\CacheMiddleware(), 'cache');
-$stack->push(\Spatie\GuzzleRateLimiterMiddleware\RateLimiterMiddleware\RateLimiterMiddleware::perSecond(2));
+$stack = \GuzzleHttp\HandlerStack::create();
+$stack->push(new \Kevinrob\GuzzleCache\CacheMiddleware(), 'cache');
+$stack->push(\Spatie\GuzzleRateLimiterMiddleware\RateLimiterMiddleware::perSecond(2));
 
 $httpClient = \GuzzleHttp\Client(['handler' => $stack]);
 $api = new \Sysix\LexOffice\Api($apiKey, $httpClient);
